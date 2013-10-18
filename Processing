@@ -83,6 +83,7 @@ void draw() {
    }
   }
   
-  //Het is mij nog niet gelukt de bovenste rand OOK grijs te maken. Dit zou een perfecte uitkomst bieden om het geheel een titel te geven...
+  //Het is mij nog niet gelukt de bovenste rand OOK grijs te maken.
+  //Dit zou een perfecte uitkomst bieden om het geheel een titel te geven...
   
 }
