@@ -1,0 +1,88 @@
+String lines[] = loadStrings("http://www.databeleving.nl/processing/knmi.txt");
+int anders = 2;
+
+void setup() {
+  size(700, 500);
+  smooth();
+}
+
+void draw() {
+  background(235);
+  
+  int j = 0;
+  int k = 0;
+
+  for (int i = 12; i < lines.length; i++) {
+    String[] list = split(lines[i], ',');
+   
+  if(anders == 2){  
+    int minTemp = int(trim(list[anders]));    //Trim = spaties weghalen
+    fill(0, 50, map(minTemp, 0, 200, 255, 100));
+  }
+  
+  else if(anders == 3){
+    int maxTemp = int(trim(list[3]));
+    fill(map(maxTemp, 0, 400, 255, 100), 0, 0);
+  }
+    if (j % 7 == 0 && j != 0) {
+      k++;
+      j = 0;
+    }
+
+    rect(width/7 * j, height/5 * k, width/7, height/5);
+//    noStroke(); //Mogelijk om zwarte lijnen weg te halen en het beeld tot 1 kleurrijk geheel te laten maken.
+    j++;
+  }
+
+
+
+  color c = get(mouseX, mouseY);
+  float tempKoud = (map(blue(c), 255, 100, 0, 200)); //Kleuren weer naar graden omzetten
+  tempKoud = floor(tempKoud); //afronden naar beneden
+  tempKoud = tempKoud / 10; //van 140 naar 14 graden maken
+  println(tempKoud);
+  
+  color d = get(mouseX, mouseY);
+  float tempWarm = (map(red(d), 255, 100, 0, 400)); //Kleuren weer naar graden omzetten
+  tempWarm = floor(tempWarm); //afronden naar beneden
+  tempWarm = tempWarm / 10; //van 140 naar 14 graden maken
+  println(tempWarm);
+  
+//Dus ALS de koude temperaturen zichtbaar zijn, weergeef de eerste tekst opdracht.
+//Anders weergeef de tweede tekstopdracht.
+  if(anders == 2){
+    textSize(25);
+    fill(0, 0, 0);
+    text(tempKoud + "" + char(176) + "C", (width/2)-100, 455);
+  }
+  else{
+    textSize(25);
+    fill(0, 0, 0);
+    text(tempWarm + "" + char(176) + "C", (width/2)-100, 455);
+  }
+  
+  textSize(20);
+  fill(0, 0, 0);
+  text("Augustus", width-150, 455);
+
+  textSize(20);
+  fill(30, 82, 176);
+  text("Koud", 25, 440); 
+
+  textSize(20);
+  fill(190, 22, 22);
+  text("Warm", 25, 475);
+  
+  
+  if(mousePressed){
+   if(anders == 2){
+    anders = 3; 
+   }
+   else {
+     anders = 2;
+   }
+  }
+  
+  //Het is mij nog niet gelukt de bovenste rand OOK grijs te maken. Dit zou een perfecte uitkomst bieden om het geheel een titel te geven...
+  
+}
