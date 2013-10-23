@@ -1,0 +1,197 @@
+/*CSS-Reset*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, font, img, ins, kbd, q, s, samp, legenda,
+small, strike, sub, sup, tt, var, blokje1, blokje2, blokje3, blokje4,
+dl, dt, dd, ol, ul, li, jaar1, jaar2, jaar3, jaar4,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit;
+}
+
+/* remember to define focus styles! */
+
+:focus {
+	outline: 0;
+}
+
+body {
+	line-height: 1; color: black; background: white;
+	background-image:url('background3.png')
+}
+
+ol, ul {
+	list-style: none;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+	border-collapse: separate; border-spacing: 0;
+}
+caption, th, td {
+	text-align: left; font-weight: normal;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+	content: "";
+}
+
+blockquote, q {
+	quotes: "" "";
+}
+
+.alignleft {
+	float: left;
+}
+
+.alignright {
+	float: right;
+}
+
+.clear {
+	clear: both;
+}
+
+/*Website*/
+
+#titel h2 {
+	color: #fffaf0;
+	font-family: 'Andika', sans-serif;
+	font-size: 40px;
+	text-align: center;
+	padding-top: 35px;
+}
+
+#titel p {
+	color: #fffaf0;
+	font-family: 'Andika', sans-serif;
+	font-size: 14px;
+	text-align: center;
+	font-style: italic;
+	padding-top: 15px;
+}
+
+/* LEGENDA */
+
+.click {
+	float: left;
+	margin-left: 50px;
+	margin-top: 30px;
+}
+
+.legenda {
+	color: #fffaf0;
+	font-family: 'Andika', sans-serif;
+	margin-top: 100px;
+	float: left;
+	cursor: pointer;
+}
+
+.all { 
+	width: 30px;
+	height: 30px;
+	background-color: #FFF;
+	margin: 4px;
+	display: block;
+}
+
+.blokje0 {
+	width: 30px;
+	height: 30px;
+	background-color: #2a1f15;
+	margin: 4px;
+	display: block;
+}
+
+.blokje1 {
+	width: 30px;
+	height: 30px;
+	background-color: #a46400;
+	margin: 4px;
+	display: block;
+}
+
+.blokje2 {
+	width: 30px;
+	height: 30px;
+	background-color: #dfbe82;
+	margin: 4px;
+	display: block;
+}
+
+.blokje3 {
+	width: 30px;
+	height: 30px;
+	background-color: #a47d60;
+	margin: 4px;
+	display: block;
+}
+
+.blokje4 {
+	width: 30px;
+	height: 30px;
+	background-color: #7fc7f0;
+	margin: 4px;
+	display: block;
+}
+
+.blokje5 {
+	width: 30px;
+	height: 30px;
+	background-color: #d9d9d9;
+	margin: 4px;
+	display: block;
+}
+.legenda p{
+	margin-left: 40px;
+	padding-top: 5px;
+	width: 200px;
+	display: block;
+	float: left;
+}
+
+
+/* DONUT CHARTS */
+
+.donut1 {
+	float: left;
+	margin-top: 90px;
+	margin-left: 250px;
+}
+
+.donut1 p{
+	text-align: center;
+	color: #fffaf0;
+	font-family: 'Andika', sans-serif;
+}
+
+.donut2 {
+	float: left;
+	margin-top: 90px;
+	margin-left: 80px;
+}
+.donut2 p{
+	text-align: center;
+	color: #fffaf0;
+	font-family: 'Andika', sans-serif;
+}
+
+
+/* FOOTER */
+
+#footer {
+	position:absolute;
+	width:100%;
+	bottom: 0px;			/* 0px van onderkant af, 10px kan ook */
+	height:27px;			/* Height of the footer */
+	overflow:auto;
+	
+}
+
+#footer p{
+	text-align:right;
+	margin-right: 10px;
+	font-size:15px;
+	color: #FFFAF0;
+	font-family: 'Andika', sans-serif;
+}
