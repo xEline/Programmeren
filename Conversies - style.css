@@ -1,0 +1,12 @@
+body
+{
+	background-image: url("img/blue_noise.png");
+	width: 100%;
+	display: block;
+	margin-left: 0px auto;
+}
+
+text{
+	font-family: "Open Sans Light", sans-serif;
+}
+
