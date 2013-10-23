@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Conversiedoelen</title>
+
+	<script src="d3/d3.v3.js" type="text/javascript"></script>	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+	<script>
+	d3.csv("dataset_target.csv", function(d) {
+		return {
+			Weeknummer: d.Weeknummer,
+			Conversies: d.Conversies,
+			ConversieRatio: d.ConversieRatio,
+	};
+
+}, function(error, rows) {
+
+	var svgContainer = d3.select("body").append("svg")
+		.attr("width", 1200)
+		.attr("height", 650);
+
+for (i = 0; i < rows.length; i++){
+
+var totaalBezoekers = (rows[i].Conversies)/( rows[i].ConversieRatio) / 2;  // 1px wordt hierdoor 200px.
+	
+				
+	// Balken voor aantal conversies
+	var rectangle = svgContainer.append("rect")
+	 .attr("fill", "#d2d2d2")
+	 .attr("x", rows[i].Weeknummer * 35)
+	 .attr("y", 800 - (rows[i].Conversies / 25) )
+	 .attr("width", 20)
+	 .attr("height", 0)
+	 .transition()
+			.delay(100)
+			.duration(1000)
+			.attr("height", function(d){
+				return (totaalBezoekers) 
+				}); //rows[i].Conversies / 25
+	
+		// 10% Balken
+	var rectangle = svgContainer.append("rect")
+		.attr("fill", function(d){
+			if ((rows[i].ConversieRatio) > 9){
+				return "#618e49" }
+				else {
+				return "#e31a1a" }
+			 })
+		
+		.attr("x", rows[i].Weeknummer * 35)
+		.attr("y", 650 - (rows[i].ConversieRatio))
+		.attr("width", 20)
+		.attr("height", 0)
+		.transition()
+			.delay(1100)
+			.duration(900)
+			.attr("height", function(d){
+				return (rows[i].ConversieRatio)
+			});
+
+	//10% Ratio
+	var rectangle = svgContainer.append("rect")
+							 .attr("fill", function(d){
+								if ((rows[i].ConversieRatio) > 9){
+									return "#618e49" }
+									else {
+									return "#e31a1a" }
+							 })
+							 /*.attr("fill", "#FFF")*/
+							 .attr("x", (rows[i].Weeknummer * 35))
+							 .attr("y", 650 - (rows[i].ConversieRatio))
+							 .attr("width", 20)
+							 .attr("height", 3)
+							 ;
+
+	 // Tekst Conversies
+	 var text = svgContainer.append("text")
+			.attr("fill",  function(d){
+				if (rows[i].Conversies > 10999)
+					{ return "#618e49" }
+					else { return "#e31a1a" }
+					})
+			.attr("text-anchor", "middle")
+	 		.attr("opacity", 0)
+			.attr("x", 10 +  rows[i].Weeknummer * 35)
+			.attr("y", 790 - (rows[i].Conversies / 25) )
+			.attr("font-size", "10px")
+			.text(rows[i].Conversies) 
+			//.text(rows[i].Weeknummer)
+				.transition()
+					.delay(1400)
+					.duration(900)
+					.attr("opacity", function(d){
+						return (1)
+	});
+	;
+	
+	// Tekst Weeknummers
+	var text = svgContainer.append("text")
+		.attr("fill", "#000")
+		.attr("text-anchor", "middle")
+		.attr("opacity", 0)
+		.attr("x", 10 + (rows[i].Weeknummer * 35))
+		.attr("y", 645)
+		.attr("font-size", "12px")
+		.text(rows[i].Weeknummer)
+			.transition()
+				.delay(2000)
+				.duration(1000)
+				.attr("opacity", function(d){
+				return (1)
+	});
+	;
+
+}
+
+	 });
+
+	</script>
+
+
+
+</body> 
+</html>
