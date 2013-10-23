@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" title="stylesheet" type="text/css" href="style.css" media="all" />
+        <script type="text/javascript" src="d3.js"></script>
+        <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+        <link href='http://fonts.googleapis.com/css?family=Andika' rel='stylesheet' type='text/css'>
+    </head>
+<body>
+    
+    <div id="titel">
+    	<h2>Koffie keuze</h2>
+        <p>bij Blue Mango</p>
+    </div>
+    
+<div class="click">
+		<img src="click.png" width="160" height="160">
+	</div>
+    
+    <div class="legenda">
+        <a class="all"><p>Overzicht</p></a>
+        <a class="blokje0"><p>Koffie</p></a>
+        <a class="blokje1"><p>Espresso</p></a>
+        <a class="blokje2"><p>Cappuccino</p></a>
+        <a class="blokje3"><p>Warme Chocolademelk</p></a>
+        <a class="blokje4"><p>Warm Water</p></a>
+        <a class="blokje5"><p>Overig</p></a>
+</div>
+    
+    
+<div id="donut1" class="donut1">
+    <p>Linker automaat</p>
+    </div>
+<div id="donut2" class="donut2">
+    <p>Rechter automaat</p>
+    </div>
+
+    
+<script type="text/javascript">
+        var data1 = [63, 36, 31, 9, 0, 9]; //Links
+            data2 = [134, 88, 31, 4, 2, 20]; //Rechts
+
+        function makeDonut(container, dataSet, size, radius, innerRadius){
+        var w = size,
+            h = size,
+            r = radius,
+            ir = innerRadius,
+            color = d3.scale.category20c().domain([0, 1, 2, 3, 4, 5]).range(["#2a1f15", "#a46400", "#dfbe82", "#a47d60", "#7fc7f0", "#d9d9d9", ]),
+            donut = d3.layout.pie().sort(null),
+            arc = d3.svg.arc().innerRadius(ir).outerRadius(r);
+        
+        var svg = d3.select(container).append("svg:svg")
+            .attr("width", w)
+            .attr("height", h)
+          .append("svg:g")
+            .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")");
+        
+		var arcs = svg.selectAll("path")
+            .data(donut(dataSet))
+              .enter().append("svg:path")
+                .attr("fill", function(d, i) { return color(i); })
+                .attr("d", arc)
+                .attr('class', function (d, i){ return 'blokje'+i;})
+                .each(function(d) { this._current = d; })
+				.attr('class', function (d, i){ return 'blokje'+i;});
+        }
+		
+        makeDonut('#donut1', data1, 240, 100, 0);
+        makeDonut('#donut2', data2, 240, 100, 0);
+ 
+		   $('a').click(function(){
+			//alert($(this).attr('class'));
+			var currentClass = $(this).attr('class');
+			if (currentClass == 'all'){
+				$('path').attr('opacity', 1);
+			} else {
+				$('path').attr('opacity', 0.2);
+				$('path.' +  currentClass).attr('opacity', 1);
+			}
+			});
+		   
+		   
+        </script>
+            
+      <div id="footer"> 
+       		<p>Bron: Blue Mango</p>
+      </div>
+            
+
+</body>
+</html>
