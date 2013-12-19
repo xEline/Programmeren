@@ -1,0 +1,31 @@
+body {
+	font-family: helvetica;
+}
+
+#svg {
+	margin-left: -350px;
+	padding-top: 200px;
+}
+
+a {
+	color: #000;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #F6F;
+}
+
+.panel {
+	margin-bottom: 1.25em;
+	padding: 1.25em;
+	width: 500px;
+	display: block;
+	text-align: center;
+	margin: auto;
+}
+
+.europa .land {
+	fill: #a4a4a4;
+	stroke: #d7d7d7;
+}
